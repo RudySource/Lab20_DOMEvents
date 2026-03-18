@@ -42,6 +42,22 @@ const result = document.getElementById('formResult')
 form.addEventListener('submit', event => {
 	event.preventDefault()
 	const name = usernameInput.value.trim()
-	const age = ageInput.value.trim()
+	const age = Number(ageInput.value.trim())
+	if (name === '') {
+		result.textContent = 'Пожалуйста, введите имя.'
+		result.style.color = 'red'
+		usernameInput.focus()
+		return
+	}
+	if (isNaN(age) || age <= 0 || age > 120) {
+		result.textContent = 'Пожалуйста, введите корректный возраст.'
+		result.style.color = 'red'
+		ageInput.focus()
+		ageInput.value = ''
+		return
+	}
 	result.textContent = `Имя: ${name}, Возраст: ${age}`
+	result.style.color = 'green'
+	usernameInput.focus()
+	form.reset()
 })
