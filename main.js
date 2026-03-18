@@ -28,3 +28,9 @@ button.addEventListener('click', () => {
 		output.style.color = 'red'
 	}
 })
+const clearButton = document.getElementById('clearButton')
+clearButton.addEventListener('click', () => {
+	input.value = ''
+	output.textContent = ''
+	input.focus()
+})
